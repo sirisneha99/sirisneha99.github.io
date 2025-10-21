@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneha Siri Nagabathula - Portfolio</title>
+    <style>
+        :root {
+            /* Light theme variables */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: rgba(176, 224, 230, 0.6);
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --text-tertiary: #888888;
+            --accent-primary: #2d5f7a;
+            --accent-secondary: #234a5f;
+            --border-color: #e0e0e0;
+            --card-bg: #f8f9fa;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(45, 95, 122, 0.4);
+            --gradient-primary: linear-gradient(180deg, 
+                rgba(176, 224, 230, 0.6) 0%,
+                rgba(173, 216, 230, 0.7) 25%,
+                rgba(135, 206, 235, 0.6) 50%,
+                rgba(176, 196, 222, 0.5) 75%,
+                rgba(176, 224, 230, 0.4) 100%
+            );
+        }
+
+        .dark-mode {
+            /* Dark theme variables */
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-tertiary: rgba(30, 30, 46, 0.8);
+            --text-primary: #f0f0f0;
+            --text-secondary: #cccccc;
+            --text-tertiary: #aaaaaa;
+            --accent-primary: #4a9bc7;
+            --accent-secondary: #3579a3;
+            --border-color: #444444;
+            --card-bg: #2a2a2a;
+            --nav-bg: rgba(30, 30, 30, 0.95);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(74, 155, 199, 0.4);
+            --gradient-primary: linear-gradient(180deg, 
+                rgba(30, 30, 46, 0.8) 0%,
+                rgba(40, 40, 60, 0.7) 25%,
+                rgba(50, 50, 70, 0.6) 50%,
+                rgba(40, 40, 60, 0.5) 75%,
+                rgba(30, 30, 46, 0.4) 100%
+            );
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            padding: 1.5rem 3rem;
+            box-shadow: 0 1px 3px var(--shadow-color);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-brand {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(15deg);
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 6rem 2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        #home {
+            text-align: center;
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .dark-mode #home::before {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        #home .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s backwards;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-primary);
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-hover);
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: var(--accent-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s backwards;
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow-hover);
+            background: var(--accent-secondary);
+        }
+
+        #about, #projects, #contact {
+            background: var(--bg-primary);
+        }
+
+        #experience, #resume {
+            background: var(--gradient-primary);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-primary);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        .skills {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background: var(--accent-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow-color);
+        }
+
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .experience-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-primary);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-color);
+        }
+
+        .experience-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .role {
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .date {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-card ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .experience-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--shadow-hover);
+            border-color: var(--accent-primary);
+        }
+
+        .project-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+        }
+
+        .project-badge {
+            display: inline-block;
+            background: var(--accent-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .resume-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .resume-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: var(--accent-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 1rem;
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        .resume-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow-hover);
+            background: var(--accent-secondary);
+        }
+
+        .certifications {
+            margin-top: 3rem;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-top: 3px solid var(--accent-primary);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-hover);
+        }
+
+        .cert-card h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .cert-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(45, 95, 122, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--shadow-hover);
+            background: var(--accent-secondary);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .dark-mode .form-message.success {
+            background: #0f5132;
+            color: #d1e7dd;
+            border: 1px solid #146c43;
+        }
+
+        .dark-mode .form-message.error {
+            background: #842029;
+            color: #f8d7da;
+            border: 1px solid #ea868f;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                font-size: 0.9rem;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .profile-pic {
+                width: 200px;
+                height: 200px;
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-brand">Sneha Siri Nagabathula</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button class="theme-toggle">🌙</button></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <h1>Sneha Siri Nagabathula</h1>
+            <p class="subtitle">B.S. in Cybersecurity | Research Assistant | Aspiring Software Engineer</p>
+            <p class="subtitle" style="font-size: 1.2rem;">University of South Florida</p>
+            <div class="social-links">
+                <a href="https://github.com/sirisneha99" target="_blank" class="social-link" title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://leetcode.com/u/nsnehasiri/" target="_blank" class="social-link" title="LeetCode">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+                </a>
+                <a href="https://enterprise.hackthebox.com/dashboard" target="_blank" class="social-link" title="Hack The Box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M11.996 0a1.119 1.119 0 0 0-.057.002a1.119 1.119 0 0 0-.52.148L1.414 5.82a1.119 1.119 0 0 0-.56.97v10.42c0 .4.213.77.56.969l10.005 5.67c.16.091.338.139.519.147a1.119 1.119 0 0 0 .576-.148l10.007-5.669a1.119 1.119 0 0 0 .559-.97V6.79a1.119 1.119 0 0 0-.56-.969L12.515.15a1.119 1.119 0 0 0-.519-.148zm.005 2.37l8.886 5.03-3.146 1.781-5.767-3.326zM2.01 7.64l8.76 4.954v9.717l-8.76-4.963zm19.98 0v9.717l-8.76 4.963v-9.717z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/snehasiri/" target="_blank" class="social-link" title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+            </div>
+            <a href="#experience" class="cta-button">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a senior at the University of South Florida majoring in Cybersecurity, seeking Software Engineering or Security Analyst roles where I can apply my technical skills to build secure, impactful solutions.
+                    </p>
+                    <p>
+                        I've led technical initiatives as Vice President of the Data Science Club and Software Lead for IEEE-CS, where I helped 200+ students develop their skills through hands-on workshops. My experience spans full-stack development and cybersecurity—from building secure applications to testing them for vulnerabilities.
+                    </p>
+                    <p>
+                        I secured 2nd place out of 50+ teams in the AmazonNext x CodePath Design Challenge by building an ML-powered accessibility feature with my team of 3 others, and was a top performer among 1,900+ fellows at Headstarter AI, winning 2 hackathons while building 5+ production-ready applications.
+                    </p>
+                    <div class="skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">Splunk</span>
+                        <span class="skill-tag">OpenVAS</span>
+                        <span class="skill-tag">Nessus</span>
+                        <span class="skill-tag">Metasploit</span>
+                        <span class="skill-tag">MITRE</span>
+                        <span class="skill-tag">OWASP</span>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <!-- REPLACE THE SRC ATTRIBUTE WITH YOUR PROFILE PICTURE PATH -->
+                    <div class="profile-pic">
+                        <img src="YOUR_PROFILE_PICTURE_PATH_HERE" alt="Sneha Siri Nagabathula">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Experience & Leadership</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>University of South Florida</h3>
+                    <p class="role">Research Assistant</p>
+                    <p class="date">Aug 2024 - Present · 5 mos</p>
+                    <ul>
+                        <li>Conducting research on AI/ML applications in cybersecurity</li>
+                        <li>Developing machine learning models for threat detection</li>
+                        <li>Collaborating with faculty on cybersecurity research projects</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <h3>IEEE Computer Society Student Branch Chapter at USF</h3>
+                    <p class="role">Software Lead</p>
+                    <p class="date">Apr 2024 - Jun 2025 · 1 yr 3 mos</p>
+                    <ul>
+                        <li>Led technical content and workshop development for the IEEE-CS student chapter</li>
+                        <li>Designed and delivered 3 hands-on workshops covering HTML, CSS, JavaScript, and frameworks</li>
+                        <li>Presented to audiences of 60–80 students per session</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <h3>CodePath</h3>
+                    <p class="role">Technical Lead</p>
+                    <p class="date">Nov 2024 - Jan 2025 · 3 mos</p>
+                    <ul>
+                        <li>🏆 Secured 2nd place out of 50+ teams in AmazonNext x CodePath Design Challenge</li>
+                        <li>Designed ML-powered accessibility feature for colorblind users</li>
+                        <li>Implemented freshness scanner using Level 2 image classification</li>
+                        <li>Redesigned Walmart app UI prototype with integrated accessibility features</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Data Science at USF</h3>
+                    <p class="role">Vice President</p>
+                    <p class="date">Apr 2024 - Dec 2024 · 9 mos</p>
+                    <ul>
+                        <li>Led a team of 12 students in the Data Science Club</li>
+                        <li>Coordinated 12 workshops across two semesters</li>
+                        <li>Helped 200+ students start/improve their Data Science journey</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Headstarter AI</h3>
+                    <p class="role">Software Engineer Fellow</p>
+                    <p class="date">Jul 2024 - Aug 2024 · 2 mos</p>
+                    <ul>
+                        <li>🏆 Top Performer out of 1,900+ Fellows</li>
+                        <li>Won 2 weekly hackathons with innovative full-stack applications</li>
+                        <li>Built 5+ production-ready projects using React, Next.js, and Firebase</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Microsoft TEALS Volunteer</h3>
+                    <p class="role">Volunteer Educator</p>
+                    <p class="date">Aug 2024 - Dec 2024 · 5 mos</p>
+                    <ul>
+                        <li>Supported high school computer science education</li>
+                        <li>Taught Python and Java (AP Level) curriculum</li>
+                        <li>Provided technical expertise and real-world industry context</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- REPLACE THE HREF ATTRIBUTE WITH YOUR GITHUB PROJECT LINKS -->
+                <a href="https://github.com/sirisneha99/accessibility-shopping-app" target="_blank" class="project-card">
+                    <span class="project-badge">🏆 Award Winner</span>
+                    <h3>Accessibility-Enhanced Shopping App</h3>
+                    <p>ML-powered colorblind accessibility feature with produce freshness scanner. 2nd place in AmazonNext x CodePath Design Challenge (50+ teams).</p>
+                </a>
+                <a href="https://github.com/sirisneha99/fullstack-apps" target="_blank" class="project-card">
+                    <span class="project-badge">Full-Stack</span>
+                    <h3>Full-Stack Web Applications</h3>
+                    <p>Built 5+ production-ready applications using React, Next.js, Node.js, and Firebase during Headstarter AI fellowship.</p>
+                </a>
+                <a href="https://github.com/sirisneha99/health-data-analysis" target="_blank" class="project-card">
+                    <span class="project-badge">Data Science</span>
+                    <h3>Health Data Analysis</h3>
+                    <p>Contributed to aging outcomes prediction using CLSA, All of Us, and BLSA datasets with Python, Pandas, and Scikit-Learn.</p>
+                </a>
+                <a href="https://github.com/sirisneha99/security-tools" target="_blank" class="project-card">
+                    <span class="project-badge">Cybersecurity</span>
+                    <h3>Security Analysis Tools</h3>
+                    <p>Developed security monitoring and analysis tools using Splunk, Bash, and Linux CLI for threat detection.</p>
+                </a>
+                <a href="https://github.com/sirisneha99/workshop-platform" target="_blank" class="project-card">
+                    <span class="project-badge">Web Development</span>
+                    <h3>Workshop Learning Platform</h3>
+                    <p>Created interactive workshop materials for teaching HTML, CSS, JavaScript, and modern frameworks to 60-80 students.</p>
+                </a>
+                <a href="https://github.com/sirisneha99/leetcode-solutions" target="_blank" class="project-card">
+                    <span class="project-badge">Algorithms</span>
+                    <h3>LeetCode Solutions</h3>
+                    <p>Solved 100+ algorithmic problems focusing on data structures, algorithms, and optimization techniques in Python.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume">
+        <div class="container">
+            <h2>Resume & Certifications</h2>
+            <div class="resume-container">
+                <p style="margin-bottom: 2rem; color: var(--text-secondary); line-height: 1.6;">
+                    Download my resume to learn more about my experience, skills, and accomplishments.
+                </p>
+                <!-- REPLACE THE HREF ATTRIBUTE WITH YOUR RESUME PDF PATH -->
+                <a href="YOUR_RESUME_PDF_PATH_HERE" class="resume-button" download>📄 Download Resume</a>
+                <a href="mailto:YOUR_EMAIL_HERE?subject=Resume Request&body=Hi Sneha, I would like to request your resume." class="resume-button">📧 Email Resume</a>
+            </div>
+            
+            <div class="certifications">
+                <h3 style="text-align: center; margin-bottom: 1rem;">Certifications & Achievements</h3>
+                <div class="cert-grid">
+                    <!-- REPLACE THE HREF ATTRIBUTES WITH YOUR CERTIFICATE PDF PATHS -->
+                    <a href="YOUR_AWS_CERTIFICATE_PDF_PATH_HERE" target="_blank" class="cert-card">
+                        <h4>AWS Certified Cloud Practitioner</h4>
+                        <p>Amazon Web Services</p>
+                    </a>
+                    <a href="YOUR_GOOGLE_CYBERSECURITY_CERTIFICATE_PDF_PATH_HERE" target="_blank" class="cert-card">
+                        <h4>Google Cybersecurity Certificate</h4>
+                        <p>Google</p>
+                    </a>
+                    <a href="YOUR_COMPTIA_CERTIFICATE_PDF_PATH_HERE" target="_blank" class="cert-card">
+                        <h4>CompTIA Security+</h4>
+                        <p>CompTIA</p>
+                    </a>
+                    <a href="YOUR_HACKERRANK_CERTIFICATE_PDF_PATH_HERE" target="_blank" class="cert-card">
+                        <h4>HackerRank Python Certified</h4>
+                        <p>HackerRank</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <span class="contact-icon">📬</span>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-secondary);">
+                I'm always open to discussing new opportunities, projects, or collaborations. Feel free to reach out!
+            </p>
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xnngyvpn" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+                <div class="form-message" id="formMessage"></div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Dark mode toggle with localStorage persistence
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+        
+        // Check for saved theme preference or respect OS preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        } else {
+            body.classList.remove('dark-mode');
+            themeToggle.textContent = '🌙';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            themeToggle.textContent = isDarkMode ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact form submission with Formspree
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    formMessage.textContent = 'Thank you! Your message has been sent successfully.';
+                    formMessage.className = 'form-message success';
+                    formMessage.style.display = 'block';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                formMessage.textContent = 'Oops! There was a problem sending your message. Please try again.';
+                formMessage.className = 'form-message error';
+                formMessage.style.display = 'block';
+            } finally {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 2px 10px var(--shadow-color)';
+            } else {
+                nav.style.boxShadow = '0 1px 3px var(--shadow-color)';
+            }
+        });
+
+        // Add fade-in animation for elements when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.experience-card, .project-card, .cert-card').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
