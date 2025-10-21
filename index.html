@@ -899,22 +899,24 @@
     </section>
 
     <script>
-        // Dark mode toggle with localStorage persistence
+        // Dark mode toggle with localStorage persistence - DEFAULT TO LIGHT MODE
         const themeToggle = document.querySelector('.theme-toggle');
         const body = document.body;
-        
-        // Check for saved theme preference or respect OS preference
+
+        // Check for saved theme preference - DEFAULT TO LIGHT
         const savedTheme = localStorage.getItem('theme');
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-        
-        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+
+        // Always default to light mode unless user explicitly chose dark
+        if (savedTheme === 'dark') {
             body.classList.add('dark-mode');
             themeToggle.textContent = '☀️';
         } else {
             body.classList.remove('dark-mode');
             themeToggle.textContent = '🌙';
+            // Ensure light mode is set as default in localStorage
+            localStorage.setItem('theme', 'light');
         }
-        
+
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             const isDarkMode = body.classList.contains('dark-mode');
